@@ -1,0 +1,29 @@
+import { Inter } from "next/font/google";
+import SessionProviderWrapper from '../common/components/SessionProviderWrapper';
+import React from "react";
+import dynamic from 'next/dynamic';
+import { metadata } from './metadata';
+
+export { metadata };
+const inter = Inter({ subsets: ["latin"] });
+
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+
+  const ClientThemeProvider = dynamic(() => import('../common/hoc/ClientThemeProvider'), { ssr: false });
+
+  return (
+    <html lang="en">
+      <body className={inter.className}>
+      <SessionProviderWrapper>
+        <ClientThemeProvider>
+          {children}
+        </ClientThemeProvider>
+      </SessionProviderWrapper>
+      </body>
+    </html>
+  );
+}
