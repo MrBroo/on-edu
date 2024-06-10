@@ -4,34 +4,17 @@ import {
 
 import NextLink from 'next/link';
 import PropTypes from 'prop-types';
-import { useEffect } from 'react';
-import { useRouter } from 'next/navigation';
+import { useNavigation } from '@lib/hooks/useNavigation';
 import Scrollbar from '../Scrollbar';
 import MainSidebarSection from '../MainSidebarSection';
 import AuthAclGuard from '../AuthAclGuard';
 
 export default function MainSidebar(props: any) {
   const { onClose, open, sections } = props;
-  const router = useRouter();
+  const router = useNavigation();
   const lgUp = useMediaQuery((theme: any) => theme.breakpoints.up('lg'), {
     noSsr: true,
   });
-
-  const handlePathChange = () => {
-    if (!router.isReady) {
-      return;
-    }
-
-    if (open) {
-      onClose?.();
-    }
-  };
-
-  useEffect(
-    handlePathChange,
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [router.isReady, router.asPath],
-  );
 
   const content = (
     <Scrollbar
@@ -72,21 +55,16 @@ export default function MainSidebar(props: any) {
         />
         <Box sx={{ flexGrow: 1 }}>
           {sections.map((section: any) => (
-            <AuthAclGuard
-              key={section.title}
-              requiredAcl={section.acl ?? []}
-            >
-              <MainSidebarSection
-                path={router.asPath}
-                sx={{
-                  mt: 1,
-                  '& + &': {
-                    mt: 1.5,
-                  },
-                }}
-                {...section}
-              />
-            </AuthAclGuard>
+            <MainSidebarSection
+              path={router.pathname}
+              sx={{
+                mt: 1,
+                '& + &': {
+                  mt: 1.5,
+                },
+              }}
+              {...section}
+            />
           ))}
         </Box>
       </Box>
@@ -103,7 +81,7 @@ export default function MainSidebar(props: any) {
             backgroundColor: 'neutral.900',
             borderRightColor: 'divider',
             borderRightStyle: 'solid',
-            borderRightWidth: (theme) => (theme.palette.mode === 'dark' ? 1 : 0),
+            borderRightWidth: (theme: any) => (theme.palette.mode === 'dark' ? 1 : 0),
             color: '#FFFFFF',
             width: 280,
           },
@@ -127,7 +105,7 @@ export default function MainSidebar(props: any) {
           width: 280,
         },
       }}
-      sx={{ zIndex: (theme) => theme.zIndex.appBar + 100 }}
+      sx={{ zIndex: (theme: any) => theme.zIndex.appBar + 100 }}
       variant="temporary"
     >
       {content}

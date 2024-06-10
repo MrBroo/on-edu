@@ -1,7 +1,6 @@
 import { List, ListSubheader } from '@mui/material';
 
 import PropTypes from 'prop-types';
-import AuthAclGuard from './AuthAclGuard';
 import MainSidebarItem from './MainSidebarItem';
 
 const renderNavItems = ({ depth = 0, items, path}: any) => (
@@ -26,40 +25,36 @@ const reduceChildRoutes = ({
   if (item.children) {
     acc.push(
       <WrapperComponent key={key}>
-        <AuthAclGuard requiredAcl={item.acl ?? []}>
           <MainSidebarItem
-            active={partialMatch}
-            chip={item.chip}
-            depth={depth}
-            icon={item.icon}
-            info={item.info}
-            open={partialMatch}
-            path={item.path}
-            title={item.title}
-          >
-            {renderNavItems({
-              depth: depth + 1,
-              items: item.children,
-              path,
-            })}
-          </MainSidebarItem>
-        </AuthAclGuard>
+          active={partialMatch}
+          chip={item.chip}
+          depth={depth}
+          icon={item.icon}
+          info={item.info}
+          open={partialMatch}
+          path={item.path}
+          title={item.title}
+        >
+          {renderNavItems({
+            depth: depth + 1,
+            items: item.children,
+            path,
+          })}
+        </MainSidebarItem>
       </WrapperComponent>,
     );
   } else {
     acc.push(
       <WrapperComponent key={key}>
-        <AuthAclGuard requiredAcl={item.acl ?? []}>
-          <MainSidebarItem
-            active={exactMatch}
-            chip={item.chip}
-            depth={depth}
-            icon={item.icon}
-            info={item.info}
-            path={item.path}
-            title={item.title}
-          />
-        </AuthAclGuard>
+        <MainSidebarItem
+          active={exactMatch}
+          chip={item.chip}
+          depth={depth}
+          icon={item.icon}
+          info={item.info}
+          path={item.path}
+          title={item.title}
+        />
       </WrapperComponent>,
     );
   }

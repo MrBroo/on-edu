@@ -7,7 +7,7 @@ import { styled } from '@mui/material/styles';
 import { useRouter } from 'next/navigation';
 import { useSession } from 'next-auth/react';
 import { useTranslation } from 'react-i18next';
-import { routes, getSidebarSections } from '../../../lib/config';
+import { getSidebarSections } from '@config';
 import MainSidebar from '../MainSidebar';
 import MainNavbar from '../MainNavbar';
 
@@ -29,7 +29,7 @@ export default function MainLayout(props: any) {
   const { t } = useTranslation();
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
-  const sections = useMemo(() => getSidebarSections(t, router), [t, router]);
+  const sections = useMemo(() => getSidebarSections(router), [router]);
 
   // useEffect(() => {
   //   if (status !== 'authenticated') {

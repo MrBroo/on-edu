@@ -207,7 +207,7 @@ export default function MainNavbar(props: any) {
         >
           <FiMenu />
         </IconButton>
-        {/* <NavbarTitle /> */}
+        <Box sx={{ flex: 1 }} />
         <LanguageButton />
         <NotificationsButton />
         <AccountButton />
