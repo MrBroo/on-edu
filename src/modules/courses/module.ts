@@ -12,6 +12,12 @@ const config = {
                     path: `${rootPath}/frontend`,
                     icon: '',
                     acl: [],
+                },
+                {
+                    title: 'Backend',
+                    path: `${rootPath}/backend`,
+                    icon: '',
+                    acl: [],
                 }
             ]
         })

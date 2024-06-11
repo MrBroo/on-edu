@@ -7,9 +7,9 @@ const ClientThemeProvider = ({ children }: { children: React.ReactNode }) => {
     return (
       <ThemeProvider 
         theme={createTheme({
-            direction: 'ltr',
-            responsiveFontSizes: true,
-            mode: 'light',
+          direction: 'ltr',
+          responsiveFontSizes: true,
+          mode: 'light',
         })}
       >
       <CssBaseline />

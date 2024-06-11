@@ -160,9 +160,7 @@ function AccountButton() {
             width: 40,
           }}
           src=""
-        >
-          <FiUser />
-        </Avatar>
+        />
       </Box>
       {/* <AccountPopover
         anchorEl={anchorRef.current}

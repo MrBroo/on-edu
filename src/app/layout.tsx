@@ -17,6 +17,12 @@ export default function RootLayout({
 
   return (
     <html lang="en">
+      <head>
+        <link
+          rel="stylesheet"
+          href="/fonts/inter-v12-latin/inter-v12-latin.css"
+        />
+      </head>
       <body className={inter.className}>
       <SessionProviderWrapper>
         <ClientThemeProvider>
