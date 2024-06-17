@@ -5,4 +5,4 @@ function Home(props: any) {
     <div>Home</div>
   );
 }
-export default withLayout(Home, 'main');
+export default withLayout(Home, 'course');

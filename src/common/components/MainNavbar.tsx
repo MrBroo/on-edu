@@ -172,16 +172,16 @@ function AccountButton() {
 }
 
 export default function MainNavbar(props: any) {
-  const { onOpenSidebar, ...other } = props;
+  const { onOpenSidebar, layoutType, ...other } = props;
 
   return (
     <MainNavbarRoot
       sx={{
         left: {
-          lg: 280,
+          lg: layoutType === 'lesson' ? 280 : 0,
         },
         width: {
-          lg: 'calc(100% - 280px)',
+          lg: layoutType === 'lesson' ? 'calc(100% - 280px)': '100%',
         },
       }}
       {...other}
@@ -216,6 +216,7 @@ export default function MainNavbar(props: any) {
 
 MainNavbar.propTypes = {
   onOpenSidebar: PropTypes.func,
+  layoutType: 'string'
 };
 
 MainNavbar.defaultProps = {

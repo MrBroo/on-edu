@@ -55,7 +55,7 @@ export default function MainLayout(props: any) {
           {children}
         </Box>
       </MainLayoutRoot>
-      <MainNavbar onOpenSidebar={() => setIsSidebarOpen(true)} />
+      <MainNavbar layoutType="lesson" onOpenSidebar={() => setIsSidebarOpen(true)} />
       <MainSidebar
         onClose={() => setIsSidebarOpen(false)}
         open={isSidebarOpen}

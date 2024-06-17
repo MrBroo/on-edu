@@ -1,18 +1,25 @@
-import { Box, Card, CardContent, ListItem, ListItemButton, Typography } from "@mui/material";
+import { 
+    Box,
+    Card,
+    CardContent,
+    ListItem,
+    ListItemButton,
+    Typography,
+} from "@mui/material";
 
 export default function LessonGroup(props) {
-    const { lessonGroup } = props;
+    const { modules } = props;
 
-    return (
-        <Card>
+    return modules.map((module) => (
+        <Card sx={{ mb: 3 }}>
             <CardContent>
                 <Box sx={{ backgroundColor: '#f0f5f9', padding: 2.5, borderRadius: 1 }}>
                     <Typography variant="h6">
-                        {lessonGroup.title}
+                        {module.title}
                     </Typography>
                 </Box>
                 <Box>
-                    {lessonGroup.lessons.map((lesson) => (
+                    {module.lessons.map((lesson) => (
                         <ListItemButton sx={{ display: 'flex', alignItems: 'center', mt: 1 }}>
                             <Box 
                                 sx={{
@@ -36,6 +43,6 @@ export default function LessonGroup(props) {
                 </Box>
             </CardContent>
         </Card>
-    )
+    ))
 }
 
