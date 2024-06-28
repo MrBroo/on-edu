@@ -1,3 +1,5 @@
+'use client';
+import { useNavigation } from "@/src/lib/hooks/useNavigation";
 import { 
     Box,
     Card,
@@ -9,6 +11,8 @@ import {
 
 export default function LessonGroup(props) {
     const { modules } = props;
+    const router = useNavigation();
+    console.log('router', router);
 
     return modules.map((module) => (
         <Card sx={{ mb: 3 }}>
@@ -20,7 +24,7 @@ export default function LessonGroup(props) {
                 </Box>
                 <Box>
                     {module.lessons.map((lesson) => (
-                        <ListItemButton sx={{ display: 'flex', alignItems: 'center', mt: 1 }}>
+                        <ListItemButton onClick={() => router.router.push('/courses/frontend/1')} sx={{ display: 'flex', alignItems: 'center', mt: 1 }}>
                             <Box 
                                 sx={{
                                     display: 'flex',
